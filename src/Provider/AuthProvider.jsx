@@ -6,13 +6,12 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 
-
 export const AuthContext = createContext();
-
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -28,7 +27,10 @@ const AuthProvider = ({ children }) => {
       await createUserWithEmailAndPassword(auth, email, password);
 
       console.log("update profile", name, photoUrl);
-      await updateUserNameAndPhoto(name, photoUrl);
+      await updateProfile(auth.currentUser, {
+        displayName: name || null,
+        photoURL: photoUrl || null,
+      });
 
       console.error("register function try", error);
     } catch (error) {
