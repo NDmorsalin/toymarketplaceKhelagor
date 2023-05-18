@@ -1,10 +1,11 @@
+import { Outlet } from "react-router-dom";
 import Header from "../Share/Header/Header";
 
 const HomeLayout = () => {
   return (
     <div>
-      <Header/>
-      <h1>Home Layout</h1>
+      <Header />
+      <Outlet />
     </div>
   );
 };
