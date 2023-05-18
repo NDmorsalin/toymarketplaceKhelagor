@@ -39,41 +39,40 @@ const Login = () => {
   };
   console.log({ loading, error });
   return (
-    <div className="flex w-full flex-col-reverse lg:items-center lg:flex-row-reverse h-[calc(100vh-2rem)] relative">
-      {/* Form */}
-      <div className="w-full absolute lg:relative h-full  z-10 top-0 left-0 lg:w-1/2 bg-[#E5E7EB]/75 lg:bg-[#E5E7EB] backdrop-blur-sm  flex justify-center items-center flex-col">
-        <form onSubmit={handleLogin} className="max-w-sm w-full p-6">
-          <h1 className="text-2xl font-bold mb-6">Login</h1>
+    <><>
+   <div className="bg-[#E5E7EB] lg:h-[calc(100vh-4.5rem)]  flex flex-col lg:flex-row-reverse justify-center items-center py-8">
+    <div className="w-full max-w-md lg:w-1/2">
+      <div className=" shadow-lg  rounded-lg p-5">
+        <h1 className="text-xl font-semibold mb-4">Login</h1>
+        <form onSubmit={handleLogin}>
+       
           <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-bold text-gray-700"
-              htmlFor="email"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
             </label>
             <input
-              className="border border-gray-400 p-2 w-full"
               type="email"
               id="email"
-              placeholder="Enter your email"
               name="email"
+              
+              className="w-full px-4 py-2 border-gray-300 rounded-md focus:border-indigo-500 focus:outline-none"
             />
           </div>
           <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-bold text-gray-700"
-              htmlFor="password"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
             </label>
             <input
-              className="border border-gray-400 p-2 w-full"
               type="password"
               id="password"
               name="password"
-              placeholder="Enter your password"
+              
+              className="w-full px-4 py-2 border-gray-300 rounded-md focus:border-indigo-500 focus:outline-none"
             />
           </div>
+          
+          {error && <p className="text-red-600 font-bold">{error}</p>}
+          <div className="flex justify-between">
           <button
             type="submit"
             disabled={loading}
@@ -93,12 +92,13 @@ const Login = () => {
               "Sign In"
             )}
           </button>
-          {error && <p className="text-red-600 font-bold">{error}</p>}
+    <Link to="/auth/login" className="mt-4 text-blue-500"> Already have an account? Login</Link>
+          </div>
         </form>
-        <div className="flex flex-col w-1/4 border-opacity-50">
-          <div className="divider">OR</div>
+        <div className="flex flex-col w-2/4 mx-auto border-opacity-50">
+          <div className="divider my-2">OR</div>
           <div className="flex items-center justify-center">
-          <button
+            <button
               type="button"
               onClick={handleGoogleLogin}
               disabled={loading}
@@ -108,18 +108,19 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <Link to="/auth/register" className="mt-4 text-blue-500">
-          Don&apos;t have an account? Register
-        </Link>
       </div>
-      {/* LottieFiles Animation */}
-      <div className="w-full   lg:w-1/2 bg-gray-200 flex justify-center items-center">
+      
+    </div>
+    <hr />
+    <div className="w-full   lg:w-1/2 bg-gray-200 flex justify-center items-center">
         <Lottie
           animationData={animationData}
-          className="h-[calc(100vh-2rem)]"
+          className="h-[calc(100vh-4.5rem)]"
         />
       </div>
-    </div>
+  </div>
+    </> 
+    </>
   );
 };
 
