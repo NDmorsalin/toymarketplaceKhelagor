@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
 import { A11y, FreeMode, Pagination, Autoplay } from "swiper";
@@ -23,21 +24,21 @@ const slider = [
   },
   {
     id: 2,
-    image: "https://source.unsplash.com/featured/?doll",
+    image: "https://source.unsplash.com/random/?doll",
     title: "American Girl Doll",
     subtitle:
       "American Girl dolls are beloved by children all over the world. They're not just toys, they're friends.",
   },
   {
     id: 3,
-    image: "https://source.unsplash.com/featured/?doll",
+    image: "https://source.unsplash.com/random/?doll",
     title: "Lego Friends Dolls",
     subtitle:
       "Lego Friends dolls are the perfect way for kids to express their creativity. With their unique designs  ",
   },
   {
     id: 4,
-    image: "https://source.unsplash.com/featured/?doll",
+    image: "https://source.unsplash.com/random/?doll",
     title: "Disney Princess Dolls",
     subtitle:
       "Disney Princess dolls are a dream come true for any little girl. With their beautiful dresses ",

@@ -20,18 +20,18 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          to="/alltoys"
+          to="/alldolls"
           className={({ isActive }) => (isActive ? ' px-2 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded-md' : "")}
         >
-          All Toys
+          All Dolls
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/mytoys"
+          to="/mydolls"
           className={({ isActive }) => (isActive ? ' px-2 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded-md' : "")}
         >
-          My Toys
+          My Dolls
         </NavLink>
       </li>
       <li>

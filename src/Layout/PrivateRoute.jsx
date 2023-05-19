@@ -1,9 +1,9 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../provider/Auth/AuthProvider";
-import Loading from "../Shared/Loading/Loading";
+import { useAuth } from "../Provider/AuthProvider";
+import Loading from "../Share/Loading/Loading";
 
 /* eslint-disable react/prop-types */
-const Private = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { user, loading, error } = useAuth();
   const location = useLocation();
 
@@ -23,4 +23,4 @@ const Private = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default Private;
+export default PrivateRoute;
