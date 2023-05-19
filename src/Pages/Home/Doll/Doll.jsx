@@ -1,33 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import SectionTitle from "../../../Share/SectionTitle/SectionTitle";
+import DollCard from "../DollCard/DollCard";
 
-const Doll = () => {
-  const [dolls, setDolls] = useState([]);
-  const [subcategory, setSubcategory] = useState([]);
-
-  useEffect(() => {
-    const fetchDolls = async () => {
-      const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server
-      setDolls(res.data);
-      const subCtg = [];
-      res.data.map((doll) => {
-        if (!subCtg.includes(doll.subcategory)) {
-          subCtg.push(doll.subcategory);
-        }
-      });
-      setSubcategory(subCtg);
-      // console.log(res.data);
-    };
-    fetchDolls();
-  }, []);
-
+const Doll = ({ dolls, subcategory }) => {
   console.log(subcategory);
   return (
     <div className="container px-8 mx-auto ">
-      <SectionTitle subtitle='You can sort all dolls by there Subcategory' title='Shop by category'/>
+      <SectionTitle
+        subtitle="You can sort all dolls by there Subcategory"
+        title="Shop by category"
+      />
       <Tabs defaultIndex={1} onSelect={(index) => console.log(index)}>
         <TabList>
           {subcategory.map((sub) => (
@@ -38,18 +21,17 @@ const Doll = () => {
         {subcategory.map((sub, ind) => {
           return (
             <TabPanel key={sub + ind}>
-              {dolls
-                .filter((doll) => doll.subcategory === sub)
-                .map((doll, index) => (
-                  <p key={doll._id}>
-                    {doll.details} {index}
-                  </p>
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {dolls
+                  .filter((doll) => doll.subcategory === sub)
+                  .map((doll) => (
+                    <DollCard key={doll._id} doll={doll} />
+                  ))}
+              </div>
             </TabPanel>
           );
         })}
       </Tabs>
-      dolls
     </div>
   );
 };
