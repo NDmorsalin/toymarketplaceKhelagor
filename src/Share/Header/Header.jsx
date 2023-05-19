@@ -97,9 +97,9 @@ const Header = () => {
             </div>
             <NavLink
               to="/"
-              className="btn btn-ghost ms-2 normal-case text-xl flex items-center justify-center gap-1"
+              className="ms-2 normal-case text-xl flex items-center justify-center gap-1"
             >
-              <Lottie animationData={animationData} className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl" />
+              <Lottie animationData={animationData} className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl  shadow-lg" />
               <span className="hidden sm:inline-block ">Khela Gor</span>
             </NavLink>
           </div>

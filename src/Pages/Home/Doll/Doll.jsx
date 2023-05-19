@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import SectionTitle from "../../../Share/SectionTitle/SectionTitle";
 
 const Doll = () => {
   const [dolls, setDolls] = useState([]);
@@ -26,6 +27,7 @@ const Doll = () => {
   console.log(subcategory);
   return (
     <div className="container px-8 mx-auto ">
+      <SectionTitle subtitle='You can sort all dolls by there Subcategory' title='Shop by category'/>
       <Tabs defaultIndex={1} onSelect={(index) => console.log(index)}>
         <TabList>
           {subcategory.map((sub) => (
