@@ -36,7 +36,7 @@ const slider = [
       "Lego Friends dolls are the perfect way for kids to express their creativity. With their unique designs  ",
   },
   {
-    id: 3,
+    id: 4,
     image: "https://source.unsplash.com/featured/?doll",
     title: "Disney Princess Dolls",
     subtitle:
