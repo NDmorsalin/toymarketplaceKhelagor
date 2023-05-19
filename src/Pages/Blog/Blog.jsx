@@ -88,7 +88,7 @@ const Blog = () => {
           </ul>
           <p className="text-info">
             By following these best practices, you can help to protect your
-            users' data and prevent unauthorized access to your system.
+            users&apos; data and prevent unauthorized access to your system.
           </p>
         </div>
       ),
@@ -458,10 +458,10 @@ const Blog = () => {
           <p className="">
             This aggregation operation will first filter the documents in the
             collection to only include documents where the name field is equal
-            to "MongoDB". The aggregation operation will then group the
-            documents together based on the _id field. The final stage in the
-            aggregation operation calculates the sum of the _id field across all
-            documents in the group. The results of the aggregation operation
+            to &quot;MongoDB&quot;. The aggregation operation will then group
+            the documents together based on the _id field. The final stage in
+            the aggregation operation calculates the sum of the _id field across
+            all documents in the group. The results of the aggregation operation
             will be an array of documents that contains a single document with
             the total count of documents in the collection.
           </p>
