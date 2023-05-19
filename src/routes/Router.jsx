@@ -10,12 +10,13 @@ import AllDolls from "../Pages/AllDolls/AllDolls";
 import PrivateRoute from "../Layout/PrivateRoute";
 import Error404Page from "../Pages/Error/Error";
 import SingleDoll from "../Pages/SingleDoll/SingleDoll";
+import MyDolls from "../Pages/MyDolls/MyDolls";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
-    errorElement:<Error404Page/>,
+    errorElement: <Error404Page />,
     children: [
       {
         path: "/",
@@ -31,8 +32,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/doll/:id",
-        element: <SingleDoll />,
-        loader:({params})=>fetch(`http://localhost:5000/api/doll/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <SingleDoll />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/doll/${params.id}`),
+      },
+      {
+        path: "/mydolls",
+        element: (
+          <PrivateRoute>
+            <MyDolls />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addtoy",
