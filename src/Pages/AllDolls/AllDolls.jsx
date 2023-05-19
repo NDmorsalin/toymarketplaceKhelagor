@@ -8,7 +8,7 @@ const AllDolls = () => {
   const [dolls, setDolls] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalDolls, setTotalDolls] = useState(0);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -74,6 +74,7 @@ const AllDolls = () => {
         <div className="flex items-center justify-center gap-2">
           <p className="">Page Limit</p>
           <select
+          defaultValue={limit}
           className="border border-gray-300 rounded-md text-gray-500 text-sm"
           onChange={(e) => setLimit(e.target.value)}
         >
