@@ -11,6 +11,7 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import SectionTitle from "../../../Share/SectionTitle/SectionTitle";
 import { FaCartPlus, FaEye, FaHeart } from "react-icons/fa";
 import Loading from "../../../Share/Loading/Loading";
+import { Link } from "react-router-dom";
 
 export default function Gallery({ dolls, loading }) {
   return (
@@ -37,7 +38,7 @@ export default function Gallery({ dolls, loading }) {
           pagination={true}
           modules={[EffectCoverflow, Pagination, Autoplay]}
           autoplay={{
-            delay: 1000,
+            delay: 2500,
             disableOnInteraction: false,
           }}
           className="mySwiper"
@@ -51,9 +52,9 @@ export default function Gallery({ dolls, loading }) {
                   className=" object-cover h-[400px] w-full"
                 />
                 <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 "></div>{" "}
-                <button className="bg-blue-500 text-white  py-2 px-4 rounded-full transition-all duration-700 absolute left-1/2 -translate-x-1/2 -bottom-full group-hover:bottom-4 flex items-center justify-between gap-3">
+                <Link to={`/doll/${doll._id}`} className="bg-blue-500 text-white  py-2 px-4 rounded-full transition-all duration-700 absolute left-1/2 -translate-x-1/2 -bottom-full group-hover:bottom-8 flex items-center justify-between gap-3">
                   View <FaEye />
-                </button>
+                </Link>
                 <div className="transition-all duration-700 absolute top-4 -right-full group-hover:right-4  flex items-center flex-col gap-2">
                   <button className="bg-white text-blue-500  w-12 h-12 shadow shadow-blue-300 py-2 px-4 rounded-full  flex items-center justify-between gap-3">
                     <FaCartPlus />

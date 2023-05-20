@@ -5,7 +5,7 @@ import DollCard from "../DollCard/DollCard";
 import Loading from "../../../Share/Loading/Loading";
 
 const Doll = ({ dolls, subcategory, loading }) => {
-  console.log(subcategory);
+  // console.log(subcategory);
   return (
     <div className="container px-8 mx-auto ">
       <SectionTitle
