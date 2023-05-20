@@ -3,6 +3,7 @@ import DollRow from "./DollRow/DollRow";
 import axios from "axios";
 import Loading from "../../Share/Loading/Loading";
 import Pagination from "../../Share/Pagination/Pagination";
+import SearchField from "../../Share/SeachField/SearchField";
 
 const AllDolls = () => {
   const [dolls, setDolls] = useState([]);
@@ -10,12 +11,13 @@ const AllDolls = () => {
   const [totalDolls, setTotalDolls] = useState(0);
   const [limit, setLimit] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
-  
+  const [search, setSearch] = useState("");
+  // console.log(search);
   useEffect(() => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}`
+        `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);
@@ -25,6 +27,7 @@ const AllDolls = () => {
   }, [limit, currentPage]);
 
   const totalPage = Math.ceil(totalDolls / limit);
+  // console.log(totalPage);
   // const pageNum = [...Array(totalPage).keys()];
   return (
     <>
@@ -34,7 +37,10 @@ const AllDolls = () => {
             <Loading />
           </div>
         ) : (
-          <table className="table w-full">
+          <div className="">
+            <h1 className="text-3xl text-center font-semibold text-gray-800">All Dolls</h1>
+            <SearchField setTotalDolls={setTotalDolls} setDolls={setDolls} setLoading={setLoading} setSearch={setSearch} />
+            <table className="table w-full">
               {/* head */}
               <thead>
                 <tr className="hover">
@@ -64,6 +70,7 @@ const AllDolls = () => {
                 </tr>
               </tfoot>
             </table>
+          </div>
         )}
       </div>
       <div className="flex items-center justify-center gap-4 mt-8">
