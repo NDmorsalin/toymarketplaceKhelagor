@@ -1,35 +1,69 @@
+import swal from 'sweetalert';
 import { useState } from "react";
+import { useAuth } from "../../Provider/AuthProvider";
+import { distractObject } from "../../utility/distractObject";
+import axios from "axios";
 
 const AddDoll = () => {
-  const [formData, setFormData] = useState({
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const defaultValue = {
     picture: "",
     name: "",
     price: "",
-    category: "",
     subcategory: "",
     rating: "",
-    sellerName: "",
-    sellerEmail: "",
-    sellerImg: "",
+    sellerName: user?.displayName,
+    sellerEmail: user?.email,
+    sellerImg: user?.photoURL,
     quantity: "",
     details: "",
-  });
+  };
+  const [formData, setFormData] = useState(defaultValue);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your form submission logic here
-    console.log(formData);
+    setLoading(true);
+    const dollData = {
+      ...distractObject(
+        formData,
+        "sellerName", //property name what you want to skip
+        "sellerEmail", //property name what you want to skip
+        "sellerImg" //property name what you want to skip
+      ),
+      seller: {
+        sellerName: formData.sellerName,
+        sellerEmail: formData.sellerEmail,
+        sellerImg: formData.sellerImg,
+      },
+    };
+
+    // console.log(dollData);
+    try {
+      const res = await axios.post("http://localhost:5000/api/dolls", dollData);
+      if(res.data.acknowledged){
+        swal({
+          title: 'Added a new doll',
+          text: "Click ok button and you can add new one!",
+          icon: "success",
+        }); 
+        setFormData(defaultValue);
+      } 
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   return (
     <div className="container mx-auto p-8">
-      <h2 className="text-4xl font-bold text-center my-4 "> 
-        Add Doll
-      </h2>
+      <h2 className="text-4xl font-bold text-center my-4 ">Add Doll</h2>
       <form onSubmit={handleSubmit} className=" ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="mb-4">
@@ -43,6 +77,7 @@ const AddDoll = () => {
               type="text"
               id="picture"
               name="picture"
+              value={formData?.picture}
               placeholder="https://example.com"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -59,6 +94,7 @@ const AddDoll = () => {
               type="text"
               id="name"
               name="name"
+              value={formData?.name}
               placeholder="Doll Name"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -75,23 +111,8 @@ const AddDoll = () => {
               type="number"
               id="price"
               name="price"
+              value={formData?.price}
               placeholder="Doll Price"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="category"
-              className="block text-gray-700 font-bold mb-2"
-            >
-              Category
-            </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              placeholder="Doll Category"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
             />
@@ -103,14 +124,30 @@ const AddDoll = () => {
             >
               Subcategory
             </label>
-            <input
-              type="text"
-              id="subcategory"
-              name="subcategory"
-              placeholder="Doll Subcategory"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            <select
+              defaultValue={formData.subcategory}
               onChange={handleChange}
-            />
+              name="subcategory"
+              id="subcategory"
+            >
+              <option disabled value="">
+                Select one
+              </option>
+              <option value="Action figures">Action figures</option>
+              <option value="Fashion dolls">Fashion dolls</option>
+              <option value="Stuffed animals">Stuffed animals</option>
+
+              <option value="Baby dolls">Baby dolls</option>
+              <option value="Barbie dolls">Barbie dolls</option>
+              <option value="Bisque dolls">Bisque dolls</option>
+              <option value="Blythe dolls">Blythe dolls</option>
+              <option value="Bobbleheads">Bobbleheads</option>
+              <option value="Bratz dolls">Bratz dolls</option>
+              <option value="Cabbage Patch dolls">Cabbage Patch dolls</option>
+              <option value="Candy dolls">Candy dolls</option>
+              <option value="Cloth dolls">Cloth dolls</option>
+              <option value="Dollhouses">Dollhouses</option>
+            </select>
           </div>
           <div className="mb-4">
             <label
@@ -123,6 +160,7 @@ const AddDoll = () => {
               type="text"
               id="rating"
               name="rating"
+              value={formData?.rating}
               placeholder="Doll Rating"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -140,6 +178,8 @@ const AddDoll = () => {
               id="sellerName"
               name="sellerName"
               placeholder="Seller Name"
+              value={user?.displayName}
+              disabled={user?.displayName}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
             />
@@ -155,6 +195,8 @@ const AddDoll = () => {
               type="email"
               id="sellerEmail"
               name="sellerEmail"
+              value={user?.email}
+              disabled={user?.email}
               placeholder="Seller Email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -171,6 +213,8 @@ const AddDoll = () => {
               type="text"
               id="sellerImg"
               name="sellerImg"
+              value={user?.photoURL}
+              disabled={user?.photoURL}
               placeholder="https://example.com"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -187,6 +231,7 @@ const AddDoll = () => {
               type="number"
               id="quantity"
               name="quantity"
+              value={formData?.quantity}
               placeholder="Doll Quantity"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleChange}
@@ -206,6 +251,7 @@ const AddDoll = () => {
             name="details"
             rows="4"
             cols={"50"}
+            value={formData?.details}
             placeholder="Doll Details"
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={handleChange}
@@ -214,9 +260,20 @@ const AddDoll = () => {
         <div className="flex items-center justify-between mt-6">
           <button
             type="submit"
+            disabled={loading}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Submit
+            {loading ? (
+              <div className="flex items-center justify-center gap-3">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                </span>
+                Loading...
+              </div>
+            ) : (
+              "Submit"
+            )}
           </button>
         </div>
       </form>
