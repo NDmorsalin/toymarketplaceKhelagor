@@ -1,22 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const SearchField = ({setDolls,setLoading,setSearch,setTotalDolls}) => {
+const SearchField = ({ setDolls, setLoading, setSearch, setTotalDolls }) => {
   const [inputValue, setInputValue] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
 
   useEffect(() => {
     const sendRequest = async () => {
-        setLoading(true)
+      setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/dolls?search=${inputValue}`
+          `https://khelagorbackend.vercel.app/api/dolls?search=${inputValue}`
         );
-        setSearch(inputValue)
-        setTotalDolls(response.data.totalDolls)
+        setSearch(inputValue);
+        setTotalDolls(response.data.totalDolls);
         // console.log(response.data); // Handle the response data as needed
         setDolls(response.data.dolls);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
         console.error("Error sending request:", error);
       }
@@ -44,7 +44,7 @@ const SearchField = ({setDolls,setLoading,setSearch,setTotalDolls}) => {
           className="border border-gray-300 rounded-md px-4 py-2 w-1/2 text-gray-500 text-sm"
         />
         <h5 className="group-hover:block hidden w-fit whitespace-nowrap font-bold absolute -top-[calc(70%+10px)] left-1/2 -translate-x-1/2 p-2 text-info transition-all duration-200 z-50 rounded">
-            wait 2 seconds after end your  typing
+          wait 2 seconds after end your typing
         </h5>
       </div>
     </div>

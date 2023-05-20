@@ -17,7 +17,7 @@ const AllDolls = () => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}`
+        `https://khelagorbackend.vercel.app/api/dolls?limit=${limit}&page=${currentPage}&search=${search}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);
@@ -38,8 +38,15 @@ const AllDolls = () => {
           </div>
         ) : (
           <div className="">
-            <h1 className="text-3xl text-center font-semibold text-gray-800">All Dolls</h1>
-            <SearchField setTotalDolls={setTotalDolls} setDolls={setDolls} setLoading={setLoading} setSearch={setSearch} />
+            <h1 className="text-3xl text-center font-semibold text-gray-800">
+              All Dolls
+            </h1>
+            <SearchField
+              setTotalDolls={setTotalDolls}
+              setDolls={setDolls}
+              setLoading={setLoading}
+              setSearch={setSearch}
+            />
             <table className="table w-full">
               {/* head */}
               <thead>

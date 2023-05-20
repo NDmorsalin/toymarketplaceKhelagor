@@ -14,13 +14,13 @@ const MyDolls = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
 
-  const {user} = useAuth()
+  const { user } = useAuth();
   // console.log(user?.email);
   useEffect(() => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}`
+        `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);
@@ -33,8 +33,15 @@ const MyDolls = () => {
   // const pageNum = [...Array(totalPage).keys()];
   return (
     <>
-    <h1 className="text-3xl text-center font-semibold text-gray-800 my-8">My Added  Dolls</h1>
-            <SearchField setTotalDolls={setTotalDolls} setDolls={setDolls} setLoading={setLoading} setSearch={setSearch} />
+      <h1 className="text-3xl text-center font-semibold text-gray-800 my-8">
+        My Added Dolls
+      </h1>
+      <SearchField
+        setTotalDolls={setTotalDolls}
+        setDolls={setDolls}
+        setLoading={setLoading}
+        setSearch={setSearch}
+      />
 
       <div className="overflow-x-auto w-full container px-8 mx-auto my-8">
         {loading ? (
@@ -43,24 +50,27 @@ const MyDolls = () => {
           </div>
         ) : (
           <div className="">
-            
             <table className="table w-full">
               {/* head */}
               <thead>
                 <tr className="hover">
-                 
                   <th>Doll Name</th>
                   <th>Sub-category</th>
                   <th>Price</th>
                   <th>Available Quantity</th>
-                   <th>Update</th>
+                  <th>Update</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody className="">
                 {/* row 1 */}
                 {dolls.map((doll) => (
-                  <DollRow dolls={dolls} setDolls={setDolls} doll={doll} key={doll._id} />
+                  <DollRow
+                    dolls={dolls}
+                    setDolls={setDolls}
+                    doll={doll}
+                    key={doll._id}
+                  />
                 ))}
               </tbody>
               {/* foot */}

@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/doll/${params.id}`),
+          fetch(`https://khelagorbackend.vercel.app/api/doll/${params.id}`),
       },
       {
         path: "/mydolls",

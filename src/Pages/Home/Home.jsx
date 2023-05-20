@@ -9,12 +9,13 @@ const Home = () => {
   const [subcategory, setSubcategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     const fetchDolls = async () => {
-      const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server
+      const res = await axios.get(
+        "https://khelagorbackend.vercel.app/api/dolls"
+      ); //todo change to live server
       setDolls(res.data.dolls);
-      setLoading(false)
+      setLoading(false);
       const subCtg = [];
       res.data.dolls.map((doll) => {
         if (!subCtg.includes(doll.subcategory)) {
@@ -29,7 +30,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <Gallery dolls={dolls} loading={loading}/>
+      <Gallery dolls={dolls} loading={loading} />
       <Doll dolls={dolls} loading={loading} subcategory={subcategory} />
     </div>
   );
