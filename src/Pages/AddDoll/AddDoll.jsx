@@ -45,7 +45,7 @@ const AddDoll = () => {
 
     // console.log(dollData);
     try {
-      const res = await axios.post("http://localhost:5000/api/dolls", dollData);
+      const res = await axios.post("http://localhost:5000/api/mydolls", dollData);
       if(res.data.acknowledged){
         swal({
           title: 'Added a new doll',
