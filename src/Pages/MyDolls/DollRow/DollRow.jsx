@@ -31,7 +31,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
         const res = await axios.delete(
           `http://localhost:5000/api/mydolls/${id}`
         );
-        console.log(res);
+        // console.log(res);
         setDolls(dolls.filter((dl) => dl._id !== id));
       } else {
         swal("Your imaginary file is safe!");
@@ -55,7 +55,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
         `http://localhost:5000/api/mydolls/${doll._id}`,
         dollData
       );
-      console.log(res.data);
+      // console.log(res.data);
       setLoading(false);
       swal("Poof! Your imaginary file has been deleted!", {
         icon: "success",

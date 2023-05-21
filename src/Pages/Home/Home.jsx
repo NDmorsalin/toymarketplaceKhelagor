@@ -10,7 +10,7 @@ const Home = () => {
   const [dolls, setDolls] = useState([]);
   const [subcategory, setSubcategory] = useState([]);
   const [loading, setLoading] = useState(true);
-console.log(dolls[dolls.length-1]);
+// console.log(dolls[dolls.length-1]);
   useEffect(() => {
     const fetchDolls = async () => {
       const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server

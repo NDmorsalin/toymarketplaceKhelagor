@@ -9,7 +9,7 @@ const AuthLayout = () => {
   const { user, loading, error } = useAuth();
   const location = useLocation();
 
-  console.log("layout ", { location, user, loading, error }); 
+  // console.log("layout ", { location, user, loading, error }); 
 
   return (
     <>

@@ -53,7 +53,7 @@ const Register = () => {
       setError(error.code);
     }
   };
-  console.log({ loading, error });
+  // console.log({ loading, error });
   return (
     <>
       <div className="bg-[#E5E7EB] lg:h-[calc(100vh-4.5rem)]  flex flex-col lg:flex-row-reverse justify-center items-center py-8">

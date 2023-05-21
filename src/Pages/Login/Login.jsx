@@ -21,7 +21,7 @@ const Login = () => {
     try {
       const user = await login(email, password);
       // console.log({email,password});
-      console.log(user);
+      // console.log(user);
       navigate(location?.state?.from?.pathname || "/");
 
     } catch (error) {
@@ -43,7 +43,7 @@ const Login = () => {
       setError(error.code);
     }
   };
-  console.log({ loading, error });
+  // console.log({ loading, error });
   return (
     
       <>
