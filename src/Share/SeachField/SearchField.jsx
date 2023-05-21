@@ -10,7 +10,7 @@ const SearchField = ({ setDolls, setLoading, setSearch, setTotalDolls }) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://khelagorbackend.vercel.app/api/dolls?search=${inputValue}`
+          `http://localhost:5000/api/dolls?search=${inputValue}`
         );
         setSearch(inputValue);
         setTotalDolls(response.data.totalDolls);

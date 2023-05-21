@@ -29,7 +29,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
           icon: "success",
         });
         const res = await axios.delete(
-          `https://khelagorbackend.vercel.app/api/mydolls/${id}`
+          `http://localhost:5000/api/mydolls/${id}`
         );
         console.log(res);
         setDolls(dolls.filter((dl) => dl._id !== id));
@@ -52,7 +52,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
     // console.log({ id: doll._id });
     try {
       const res = await axios.put(
-        `https://khelagorbackend.vercel.app/api/mydolls/${doll._id}`,
+        `http://localhost:5000/api/mydolls/${doll._id}`,
         dollData
       );
       console.log(res.data);

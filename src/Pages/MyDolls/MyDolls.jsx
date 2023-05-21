@@ -20,7 +20,7 @@ const MyDolls = () => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}`
+        `http://localhost:5000/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);

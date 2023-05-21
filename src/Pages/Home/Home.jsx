@@ -11,9 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchDolls = async () => {
-      const res = await axios.get(
-        "https://khelagorbackend.vercel.app/api/dolls"
-      ); //todo change to live server
+      const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server
       setDolls(res.data.dolls);
       setLoading(false);
       const subCtg = [];
