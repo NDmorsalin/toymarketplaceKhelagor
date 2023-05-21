@@ -24,21 +24,21 @@ const slider = [
   },
   {
     id: 2,
-    image: "https://source.unsplash.com/random/?doll",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIC86yf8oGZvtBX_GDf9OAlLpBo4VbhGnNf_-rY_-1SzzO7K0hkFlDZ21t&s=10",
     title: "American Girl Doll",
     subtitle:
       "American Girl dolls are beloved by children all over the world. They're not just toys, they're friends.",
   },
   {
     id: 3,
-    image: "https://source.unsplash.com/random/?doll",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVgH1pCo_BkHROblRZM-PmeqdUM0-E0MT09w&usqp=CAU",
     title: "Lego Friends Dolls",
     subtitle:
       "Lego Friends dolls are the perfect way for kids to express their creativity. With their unique designs  ",
   },
   {
     id: 4,
-    image: "https://source.unsplash.com/random/?doll",
+    image: "https://wallpapercave.com/wp/wp3522322.jpg",
     title: "Disney Princess Dolls",
     subtitle:
       "Disney Princess dolls are a dream come true for any little girl. With their beautiful dresses ",
