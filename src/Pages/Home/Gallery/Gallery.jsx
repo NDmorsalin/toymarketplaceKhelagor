@@ -27,7 +27,17 @@ export default function Gallery({ dolls, loading }) {
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={3}
+          slidesPerView={2}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
           coverflowEffect={{
             rotate: 50,
             stretch: 0,

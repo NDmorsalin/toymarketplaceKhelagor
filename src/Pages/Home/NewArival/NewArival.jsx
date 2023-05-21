@@ -2,15 +2,23 @@ import { FaCartPlus, FaEye, FaHeart, FaStar } from "react-icons/fa";
 import SectionTitle from "../../../Share/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 const NewArival = ({ item1, item2 }) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 overflow-x-auto">
       <SectionTitle
         title="New Arrival"
         subtitle="Our Colors Matching Your Different Moods."
       />
       <div className="grid md:grid-cols-2 gap-4 mx-2">
-        <div className="flex items-center flex-col-reverse md:flex-row ">
+        <div data-aos="fade-right" data-aos-duration="1000" className="flex items-center flex-col-reverse md:flex-row ">
           <div className="shadow-xl p-4 rounded-s-xl md:flex-1 space-y-3">
             <h3 className="text-xl font-bold md:text-3xl text-slate-800">
               {item1?.name}
@@ -78,7 +86,7 @@ const NewArival = ({ item1, item2 }) => {
           </div>
         </div>
         {/* item 2 */}
-        <div className="flex items-center flex-col-reverse md:flex-row ">
+        <div data-aos="fade-left" data-aos-duration="1000" className="flex items-center flex-col-reverse md:flex-row ">
           <div className="shadow-xl p-4 rounded-s-xl md:flex-1 space-y-3">
             <h3 className="text-xl font-bold md:text-3xl text-slate-800">
               {item2?.name}

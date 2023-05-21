@@ -1,9 +1,17 @@
 import { FaCartPlus, FaEye, FaHeart, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 const DollCard = ({ doll }) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="group space-y-4">
+    <div data-aos="zoom-in" data-aos-duration="1000" className="group space-y-4">
       <div className="relative overflow-hidden shadow-2xl rounded-3xl">
         <img
           src={doll.picture}

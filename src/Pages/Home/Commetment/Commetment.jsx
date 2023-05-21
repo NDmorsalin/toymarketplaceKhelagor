@@ -10,7 +10,7 @@ const Commetment = () => {
       }, []);
     
   return (
-    <div  className="container px-8 mx-auto my-8">
+    <div  className="container px-8 mx-auto my-8  overflow-x-auto">
     <SectionTitle title='Our commitment' subtitle='We are try our best to keep our commitment'/>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-2">
       <div  data-aos="fade-right" data-aos-duration="1000" className="group space-y-2  text-center  ">
