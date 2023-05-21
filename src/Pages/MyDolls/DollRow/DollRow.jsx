@@ -43,7 +43,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     // Add your form submission logic here
     setLoading(true);
@@ -55,7 +55,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
         `https://khelagorbackend.vercel.app/api/mydolls/${doll._id}`,
         dollData
       );
-      // console.log(res.data);
+      console.log(res.data);
       setLoading(false);
       swal("Poof! Your imaginary file has been deleted!", {
         icon: "success",
@@ -106,7 +106,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
               >
                 ✕
               </label>
-              <form onSubmit={handleSubmit} className=" ">
+              <form onSubmit={handleUpdate} className=" ">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="mb-4">
                     <label
