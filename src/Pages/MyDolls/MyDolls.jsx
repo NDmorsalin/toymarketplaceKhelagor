@@ -20,7 +20,7 @@ const MyDolls = () => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}`
+        `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search=${search}}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);
@@ -31,7 +31,7 @@ const MyDolls = () => {
 
   const handleAscending = async () => {
     const res = await axios.get(
-      `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}&sort=asc`
+      `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search=${search}}&sort=asc`
     ); //todo change to live server
     setDolls(res.data.dolls);
     setTotalDolls(res.data.totalDolls);
@@ -39,7 +39,7 @@ const MyDolls = () => {
   };
   const handleDescending = async () => {
     const res = await axios.get(
-      `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search${search}}&sort=desc`
+      `https://khelagorbackend.vercel.app/api/mydolls?limit=${limit}&page=${currentPage}&email=${user?.email}&search=${search}}&sort=desc`
     ); //todo change to live server
     setDolls(res.data.dolls);
     setTotalDolls(res.data.totalDolls);
