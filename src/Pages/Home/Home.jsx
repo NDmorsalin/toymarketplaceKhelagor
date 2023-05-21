@@ -3,12 +3,14 @@ import Banner from "./Banner/Banner";
 import Doll from "./Doll/Doll";
 import Gallery from "./Gallery/Gallery";
 import axios from "axios";
+import NewArival from "./NewArival/NewArival";
+import Commetment from "./Commetment/Commetment";
 
 const Home = () => {
   const [dolls, setDolls] = useState([]);
   const [subcategory, setSubcategory] = useState([]);
   const [loading, setLoading] = useState(true);
-
+console.log(dolls[dolls.length-1]);
   useEffect(() => {
     const fetchDolls = async () => {
       const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server
@@ -30,6 +32,8 @@ const Home = () => {
       <Banner />
       <Gallery dolls={dolls} loading={loading} />
       <Doll dolls={dolls} loading={loading} subcategory={subcategory} />
+      <NewArival item1={dolls[dolls.length-1]} item2={dolls[dolls.length-2]} />
+      <Commetment/>
     </div>
   );
 };

@@ -11,6 +11,7 @@ import PrivateRoute from "../Layout/PrivateRoute";
 import Error404Page from "../Pages/Error/Error";
 import SingleDoll from "../Pages/SingleDoll/SingleDoll";
 import MyDolls from "../Pages/MyDolls/MyDolls";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />,
       },
       {
         path: "/alldolls",

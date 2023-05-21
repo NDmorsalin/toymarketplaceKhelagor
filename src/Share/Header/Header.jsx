@@ -54,7 +54,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) => (isActive ? ' px-2 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded-md' : "")}
-          to="/about"
+          to="/aboutus"
         >
           About Us
         </NavLink>
