@@ -32,7 +32,7 @@ const Home = () => {
       <Banner />
       <Gallery dolls={dolls} loading={loading} />
       <Doll dolls={dolls} loading={loading} subcategory={subcategory} />
-      <NewArival item1={dolls[dolls.length-1]} item2={dolls[dolls.length-2]} />
+      <NewArival loading={loading} item1={dolls[dolls.length-1]} item2={dolls[dolls.length-2]} />
       <Commetment/>
     </div>
   );

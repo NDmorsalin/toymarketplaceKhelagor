@@ -89,12 +89,12 @@ const AuthProvider = ({
         setUser(user);
         //set jwt as email
         const res = await axios.post(
-          "http://localhost:5000/api/mydolls",
+          "http://localhost:5000/api/token",
           {
             email: user?.email
           }
         );
-        console.log(res.data)
+        console.log(res.data.token)
       } else {
         setUser(null);
       }

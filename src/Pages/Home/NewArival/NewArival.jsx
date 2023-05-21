@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import Loading from "../../../Share/Loading/Loading";
 
-const NewArival = ({ item1, item2 }) => {
+const NewArival = ({ item1, item2,loading }) => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -17,6 +18,9 @@ const NewArival = ({ item1, item2 }) => {
         title="New Arrival"
         subtitle="Our Colors Matching Your Different Moods."
       />
+      {loading ? (
+        <Loading />
+      ) : (
       <div className="grid md:grid-cols-2 gap-4 mx-2">
         <div data-aos="fade-right" data-aos-duration="1000" className="flex items-center flex-col-reverse md:flex-row ">
           <div className="shadow-xl p-4 rounded-s-xl md:flex-1 space-y-3">
@@ -153,7 +157,7 @@ const NewArival = ({ item1, item2 }) => {
             />
           </div>
         </div>
-      </div>
+      </div>)}
     </div>
   );
 };

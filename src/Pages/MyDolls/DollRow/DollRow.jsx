@@ -57,7 +57,7 @@ const DollRow = ({ doll, setDolls, dolls }) => {
       );
       // console.log(res.data);
       setLoading(false);
-      swal("Poof! Your imaginary file has been deleted!", {
+      swal("Poof! Your Doll has been Updated!", {
         icon: "success",
       });
       const updatedDoll = [

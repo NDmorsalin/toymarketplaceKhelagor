@@ -4,7 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 const useChangeTitle = () => {
     const location = useLocation();
     const {id} = useParams()
-    console.log(id);
+    // console.log(id);
     useEffect(()=>{
 
         if (location.pathname !== "/") {

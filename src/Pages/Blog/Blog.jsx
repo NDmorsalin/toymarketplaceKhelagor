@@ -520,7 +520,7 @@ const Blog = () => {
                   isOpen[index] ? "block" : "hidden"
                 } px-4 pt-2 pb-4 text-gray-700`}
               >
-                <p>{faq.answer}</p>
+                <div>{faq.answer}</div>
               </div>
             </div>
           ))}

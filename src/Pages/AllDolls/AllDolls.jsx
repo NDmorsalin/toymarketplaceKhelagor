@@ -26,11 +26,48 @@ const AllDolls = () => {
     fetchDolls();
   }, [limit, currentPage]);
 
+  const handleAscending = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=asc`
+    ); //todo change to live server
+    setDolls(res.data.dolls);
+    setTotalDolls(res.data.totalDolls);
+    setLoading(false);
+  };
+  const handleDescending = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=desc`
+    ); //todo change to live server
+    setDolls(res.data.dolls);
+    setTotalDolls(res.data.totalDolls);
+    setLoading(false);
+  };
+
   const totalPage = Math.ceil(totalDolls / limit);
   // console.log(totalPage);
   // const pageNum = [...Array(totalPage).keys()];
   return (
     <>
+      <div className="container px-8 mx-auto my-8">
+        <h1 className="text-3xl text-center font-semibold text-gray-800">
+          All Dolls
+        </h1>
+        <SearchField
+          setTotalDolls={setTotalDolls}
+          setDolls={setDolls}
+          setLoading={setLoading}
+          setSearch={setSearch}
+        />
+        {/* sort by ascending and descending */}
+        <div className="flex items-center gap-4">
+          <button onClick={handleAscending} className="btn btn-info">
+            Ascending
+          </button>
+          <button onClick={handleDescending} className="btn btn-primary">
+            Descending
+          </button>
+        </div>
+      </div>
       <div className="overflow-x-auto w-full container px-8 mx-auto my-8">
         {loading ? (
           <div className="">
@@ -38,15 +75,6 @@ const AllDolls = () => {
           </div>
         ) : (
           <div className="">
-            <h1 className="text-3xl text-center font-semibold text-gray-800">
-              All Dolls
-            </h1>
-            <SearchField
-              setTotalDolls={setTotalDolls}
-              setDolls={setDolls}
-              setLoading={setLoading}
-              setSearch={setSearch}
-            />
             <table className="table w-full">
               {/* head */}
               <thead>
