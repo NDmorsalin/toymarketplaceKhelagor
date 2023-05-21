@@ -10,10 +10,12 @@ const Home = () => {
   const [dolls, setDolls] = useState([]);
   const [subcategory, setSubcategory] = useState([]);
   const [loading, setLoading] = useState(true);
-// console.log(dolls[dolls.length-1]);
+  // console.log(dolls[dolls.length-1]);
   useEffect(() => {
     const fetchDolls = async () => {
-      const res = await axios.get("http://localhost:5000/api/dolls"); //todo change to live server
+      const res = await axios.get(
+        "https://khelagorbackend.vercel.app/api/dolls"
+      ); //todo change to live server
       setDolls(res.data.dolls);
       setLoading(false);
       const subCtg = [];
@@ -32,8 +34,12 @@ const Home = () => {
       <Banner />
       <Gallery dolls={dolls} loading={loading} />
       <Doll dolls={dolls} loading={loading} subcategory={subcategory} />
-      <NewArival loading={loading} item1={dolls[dolls.length-1]} item2={dolls[dolls.length-2]} />
-      <Commetment/>
+      <NewArival
+        loading={loading}
+        item1={dolls[dolls.length - 1]}
+        item2={dolls[dolls.length - 2]}
+      />
+      <Commetment />
     </div>
   );
 };

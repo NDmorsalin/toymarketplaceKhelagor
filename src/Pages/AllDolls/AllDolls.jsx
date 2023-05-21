@@ -17,7 +17,7 @@ const AllDolls = () => {
     setLoading(true);
     const fetchDolls = async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}`
+        `https://khelagorbackend.vercel.app/api/dolls?limit=${limit}&page=${currentPage}&search=${search}`
       ); //todo change to live server
       setDolls(res.data.dolls);
       setTotalDolls(res.data.totalDolls);
@@ -28,7 +28,7 @@ const AllDolls = () => {
 
   const handleAscending = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=asc`
+      `https://khelagorbackend.vercel.app/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=asc`
     ); //todo change to live server
     setDolls(res.data.dolls);
     setTotalDolls(res.data.totalDolls);
@@ -36,7 +36,7 @@ const AllDolls = () => {
   };
   const handleDescending = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=desc`
+      `https://khelagorbackend.vercel.app/api/dolls?limit=${limit}&page=${currentPage}&search=${search}&sort=desc`
     ); //todo change to live server
     setDolls(res.data.dolls);
     setTotalDolls(res.data.totalDolls);

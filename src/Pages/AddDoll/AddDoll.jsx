@@ -46,7 +46,7 @@ const AddDoll = () => {
     // console.log(dollData);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/mydolls",
+        "https://khelagorbackend.vercel.app/api/mydolls",
         dollData
       );
       if (res.data.acknowledged) {

@@ -9,29 +9,17 @@ import {
   updateProfile,
 } from "firebase/auth";
 import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState
-} from "react";
-import {
-  auth
-} from "../firebase/firebase.config";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
-const AuthProvider = ({
-  children
-}) => {
-  const [user,
-    setUser] = useState(null);
-  const [loading,
-    setLoading] = useState(true);
-  const [error,
-    setError] = useState(null);
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   //   register with email and password
   const register = async (email, password, name, photoUrl) => {
@@ -84,17 +72,17 @@ const AuthProvider = ({
 
   // set user on auth state change
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async(user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
         //set jwt as email
         const res = await axios.post(
-          "http://localhost:5000/api/token",
+          "https://khelagorbackend.vercel.app/api/token",
           {
-            email: user?.email
+            email: user?.email,
           }
         );
-        console.log(res.data.token)
+        console.log(res.data.token);
       } else {
         setUser(null);
       }
