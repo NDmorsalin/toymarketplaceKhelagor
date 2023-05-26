@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
       console.error("register function cathc", error);
 
       setLoading(false);
+       throw new Error(error.message);
     }
     setLoading(false);
 

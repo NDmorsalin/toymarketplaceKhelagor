@@ -35,9 +35,9 @@ const Register = () => {
       navigate(location?.state?.from?.pathname || "/");
 
     } catch (error) {
-      setError(error.code);
+      setError(error.message);
       setLoading(false);
-      console.log({ error });
+      console.log({ error:error.message });
     }
   };
   // Register with google
